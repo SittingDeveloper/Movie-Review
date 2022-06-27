@@ -80,7 +80,7 @@ class ReviewRepositoryTest {
     @DisplayName("삭제 테스트")
    public void deleteTest() {
 
-        Long mid = 100L;
+        Long mid = 98L;
         Member member = Member.builder().mid(mid).build();
 
         reviewRepository.deleteByMember(member);
