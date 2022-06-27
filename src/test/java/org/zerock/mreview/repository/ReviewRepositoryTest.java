@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.mreview.entity.Member;
 import org.zerock.mreview.entity.Movie;
 import org.zerock.mreview.entity.Review;
@@ -19,6 +21,9 @@ class ReviewRepositoryTest {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Test
     @DisplayName("리뷰 등록 테스트")
@@ -67,6 +72,19 @@ class ReviewRepositoryTest {
             System.out.println("\t" + movieReview.getText());
             System.out.println("\t" + movieReview.getMember().getEmail());
         });
+    }
+
+    @Transactional
+    @Commit
+    @Test
+    @DisplayName("삭제 테스트")
+   public void deleteTest() {
+
+        Long mid = 100L;
+        Member member = Member.builder().mid(mid).build();
+
+        reviewRepository.deleteByMember(member);
+        memberRepository.delete(member);
 
 
     }
