@@ -85,8 +85,6 @@ class ReviewRepositoryTest {
 
         reviewRepository.deleteByMember(member);
         memberRepository.delete(member);
-
-
     }
 
 }
