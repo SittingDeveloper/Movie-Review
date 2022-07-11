@@ -24,4 +24,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             " group by mi")
     List<Object[]> getMovieWithAll(@Param("mno") Long mno); // 특정 영화 조회
 
+    // detail-fetch
 }
